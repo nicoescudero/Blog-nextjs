@@ -1,0 +1,26 @@
+.post{
+  border: 1px solid yellow;
+  color: greenyellow;
+}
+
+.post > h3 {
+  color: yellow;
+}
+
+.nav{
+  width: 100%;
+  border: 1px solid yellow;
+  display: flex;
+  justify-content: space-between;
+}
+
+.options{
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.container{
+  width: 80%;
+  margin: 2% auto;
+}
