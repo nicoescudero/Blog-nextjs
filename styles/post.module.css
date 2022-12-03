@@ -1,26 +1,159 @@
-.post{
-  border: 1px solid yellow;
-  color: greenyellow;
-}
-
-.post > h3 {
-  color: yellow;
-}
-
-.nav{
-  width: 100%;
-  border: 1px solid yellow;
-  display: flex;
-  justify-content: space-between;
-}
-
-.options{
-  width: 30%;
-  display: flex;
-  justify-content: space-around;
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital@0;1&family=Playfair+Display&family=Roboto:wght@100;300&display=swap');
 
 .container{
-  width: 80%;
+  width: 70%;
+  height: fit-content;
   margin: 2% auto;
+}
+
+.post{
+  border: 1px solid white;
+  padding: 15px;
+  font-family: 'Noto Serif', serif;
+}
+
+.post >h1, .post > h2{
+  text-align: center;
+}
+.post > h2, .post > h3,.post > h4{
+  font-size: 20px;
+  font-weight: bold;
+  margin: 3% auto;
+}
+
+.post > h6{
+  font-size: 12px;
+  color: gray;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 3%;
+}
+
+.post > h6 > a{
+  text-decoration: underline gray;
+}
+
+.post > blockquote{
+  color: black;
+  width: 90%;
+  height: fit-content;
+  margin: 1% auto;
+  padding-left: 5px;
+  text-align: justify;
+  border-left: 3px solid black;
+  border-radius: 1px;
+}
+
+.post > ul{
+  width: 95%;
+  padding: 5px;
+}
+.post > ul > li{
+  list-style: disc;
+  margin-left: 5%;
+}
+.post > ul > li > a, .post > p > a{
+  color: blue;
+}
+
+.post > hr{
+  margin: 5%;
+}
+
+.post > pre{
+  margin-top: 4%;
+  margin-bottom: 4%;
+  overflow: auto;
+  width: 90%;
+  background-color: lightgray;
+  padding: 5px;
+  border-radius: 3px;
+  color: black;
+}
+
+.post > p > img:nth-child(1){
+  width: 80%;
+  margin: 1% 10%;
+}
+
+.post > p > img{
+  width: 50%;
+  margin: 5% auto;
+  max-height: max-content;
+  max-width: max-content;
+  object-fit: contain;
+}
+
+.btn_coffee{
+  width: 200px;
+  margin: 2% auto;
+}
+
+.footer{
+  background-color: black;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+  align-items: center;
+  justify-content: center;
+  height: 5vh;
+  width: 100%;
+  margin-top: auto;
+}
+
+.footer > p{
+  margin: 0 2px;
+}
+
+.footer > a{
+  color: lightblue;
+}
+.endpost{
+  text-align: center;
+  font-family: 'Noto Serif', serif;
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .container{
+    width: 90%;
+    margin-top: 10%;
+  }
+  .post > p > img{
+    width: 98%;
+    margin: 1% auto;
+  }
+}
+
+@media (max-width: 450px) {
+  .container{
+    width: 98%;
+    margin-top: 20%;
+  }
+  .post{
+    font-size: 12px;
+  }
+  .post > h6{
+    font-size: 8px;
+  }
+  .post > h2, .post > h3,.post > h4{
+    font-size: 15px;
+  }
+  .btn_coffee{
+    width: 50%;
+    margin: 2% auto;
+  }
+  .footer{
+    font-size: 10px;
+    height: fit-content;
+    flex-direction: column;
+  }
+  .endpost{
+    font-size: 10px;
+  }
+  .btn_coffee{
+    width: 100px;
+  }
 }

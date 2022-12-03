@@ -1,0 +1,71 @@
+.navbar{
+  height: 80px;
+  width: 100%;
+  display: flex;
+  background-color: inherit;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+}
+
+.logo{
+  font-size: 25px;
+  line-height: 80px;
+  padding: 0 100px;
+  color: black;
+  font-weight: bold;
+}
+
+.options{
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.btn_page{
+  border: 1px solid transparent;
+  padding: 5px 10px;
+}
+
+.btn_page:hover{
+  border-bottom: 1px solid black;
+  transition: 1s;
+}
+
+.check_btn{
+  width: 32px;
+  height: 32px;
+  display: none;
+}
+
+.check{
+  display: none;
+}
+
+@media (max-width: 850px) {
+  .navbar{
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    text-align: center;
+  }
+  .logo{
+    padding: 0 5px;
+    line-height: 10px;
+  }
+}
+
+@media (max-width: 450px){
+  .logo{
+    font-size: 15px;
+  }
+  .options{
+    width: fit-content;
+    font-size: 10px;
+  }
+  .btn_page{
+    padding: 3px;
+  }
+}

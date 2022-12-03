@@ -1,22 +1,21 @@
 import { getFilesBySlug, getFiles } from '../lib/mdx';
 import { MDXRemote } from 'next-mdx-remote';
-import { MDXComponents} from '../components/MDXComponents';
-import styles from '../styles/post.module.css';
+import Navbar from '../components/navbar'
+import ButtonCoffee from '../components/btn_coffee'
+import Footer from '../components/footer';
+import style from '../styles/Post.module.css';
 
 export default function Post({ source, frontmatter }){
   return (
     <div>
-      <nav className={styles.nav}>
-        <button>Hello World</button>
-        <div className={styles.options}>
-          <button>Option 1</button>
-          <button>Option 2</button>
-        </div>
-      </nav>
-      <div className={styles.container}>
-        
-        <MDXRemote {...source} components={MDXComponents} className={styles.post}/>
+      <div className={style.container}>
+      <Navbar/>
+      <article className={style.post}>
+        <MDXRemote {...source}/>
+      </article>
+      <ButtonCoffee/>
       </div>
+      <Footer footer={style.footer}/>
     </div>
   );
 };

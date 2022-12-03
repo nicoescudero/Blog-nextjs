@@ -1,0 +1,296 @@
+---
+title: Construccion de una API con NodeJS
+description: En este post voy a explicar como crear una API con Node.js y express, y tambien desarrollaré otros temas tecnicos o conceptos que iré explicando en el post.
+date: '01/12/2022'
+---
+
+# Construccion de una API con NodeJS
+
+![image-Upload.png](https://cdn.pixabay.com/photo/2015/04/23/17/41/node-js-736399_960_720.png)
+
+###### Photo on [pixabay](https://pixabay.com/vectors/node-js-logo-nodejs-javascript-736399/ "pixabay")
+
+En este post voy a explicar como crear una API con **Node.js** y **express**, y tambien desarrollaré otros temas tecnicos o conceptos que iré explicando en el post.
+
+## ¿Qué necesitas?
+- Necesitas tener instalado Node.js en tu ordenador. Aquí te dejo el [link](https://nodejs.org/en/ "link") donde podras descargar el instalador.
+- Despues de la instalación actualiza npm a la ultima version con el siguiente comando: 
+ > npm install npm@latest -g
+
+
+### Creación del Proyecto
+Crea una carpeta con el nombre **mi-api** o el que tu quieras, luego dentro de esta carpeta crea un archivo *app.js*
+
+Abre una terminal dentro de la misma carpeta y ejecuta el siguiente comando:
+> npm init -y
+
+Veras que se crearon dos archivos package-lock.json y package.json. Esto permitira empezar a utilizar los paquetes de [npm](https://www.npmjs.com/).
+
+### Instalación de paquetes
+Ahora instalaremos los paquetes o dependencias de nuestro proyecto.
+> npm install express helmet
+
+Y las dependencias de desarrollo las cuales seran de utilidad durante el desarrollo de la api.
+> npm install -D morgan nodemon
+
+
+### ¿Qué función tiene cada una de estas dependencias?
+
+- **express** es un framework que brinda un conjunto de herramientas las cuales nos permitiran crear un servidor.
+- **helmet** protege la API configurando los encabezados *http*.
+- **morgan** brindara en consola un registro sobre las solicitudes http que reciba la API.
+- **nodemon** permitira actualizar los cambios que se realicen sobre nuestro codigo en la etapa de desarrollo, sin tener que estar reiniciando el servidor.
+
+### La estructura del proyecto se veria de esta manera
+
+![structureProject](https://user-images.githubusercontent.com/44248035/204321608-996e635c-8115-434a-941e-25e08828309f.jpg)
+
+### Configuracion del archivo package.json
+Agregemos las siguientes lineas en scripts.
+
+```json
+"scripts": {
+    "dev": "nodemon app",
+    "start": "node app",
+  },
+```
+
+El comando **dev** te permitira actualizar los cambios que estes haciendo en el proyecto debido a que usamos **nodemon**. Y el comando **start** compilar y ejecutar la aplicación cuando ya este el proyecto en producción.
+
+### Configuración del servidor
+En nuestro archivo *app.js* debemos agregar lo siguiente:
+
+```javascript
+const express = require('express');
+const morgan = require('morgan');
+const helmet = require('helmet');
+const app = express();
+
+app.set('port',process.env.PORT || 3000);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(helmet());
+app.use(morgan('dev'));
+
+app.use(require('./routes/index.routes'));
+
+app.listen(app.get('port'),() => console.log('Server on port 3000'));
+
+```
+Lo que estamos haciendo es llamar las dependencias que vamos a usar que son express, helmet y morgan las cuales las guardamos en constantes.
+
+En la constante app llamamos al metodo express que nos permitira 
+empezar a configurar el servidor:
+
+Con *app.set('port')* configuramos el puerto del servidor de express.
+
+Luego hacemos uso del metodo *app.use()* en los cuales estamos diciendo que nuestra aplicación hara uso de archivos json y que permitira recibir peticiones http. Con *helmet* hacemos uso de la configuración por defecto de los encabezados http y *morgan* con la propiedad "dev" es para que nos muestre los registros de las solicitudes que hagamos a la API en la etapa de desarrollo.
+Tambien vemos que requerimos a *routes* en el *app.use()* esto quiere decir haremos uso de las rutas que hagamos en este archivo. 
+
+Finalmete el app.listen() esta obteniendo el puerto que configuramos anteriormente para iniciar el servidor de express.
+
+### Configuración del archivo *routes.index.js*
+
+```javascript
+const routes = require('express').Router();
+
+routes.get('/', ( req, res ) => res.send('Hola mundo!'));
+
+module.exports = routes;
+```
+
+Ahora en nuestro archivo *routes.index.js* configuramos las rutas de nuestra **API**. Lo que hacemos es guardar en una constante que luego exportaremos, el metodo *Router* de express que nos permitira empezar a configurar nuestros *endpoints*.
+
+Y en la linea del medio vemos la configuración de nuestra primera ruta. Esta tiene tres partes:
+
+Los **verbos** los cuales cumplen las siguientes funciones:
+- **get**: obtener datos.
+- **post**: crear recursos.
+- **put**: actualizar registros.
+- **delete**: eliminar registros.
+
+El **endpoint** es la ruta o dirección que en este caso es solamente ('/') haciendo referencia a la ruta principal de nuestro servidor, luego agregaremos otras.
+
+Y la **función** que cumplira nuestra ruta, que en este caso devuelve un mensaje de "Hola mundo!".
+
+### Ejecutar el servidor
+
+Ahora ejecutaremos en consola el siguiente comando:
+> npm run dev
+
+Esto empezara a correr nuestro servidor. Por lo tanto ahora puedes acceder desde tu navegador a http://localhost:3000/ y veras el mensaje de la ruta que fue configurada anteriormente.
+
+### Creando el controlador
+
+Lo que haran los controladores seran las funciones que tendran las rutas. En en este caso trabajaremos con los usurios realizando las operaciones [CRUD](https://learn.microsoft.com/en-us/iis-administration/api/crud "CRUD")  que es el acronimo de "Crear, Leer, Actualizar y Borrar".
+
+Entonces en nuestro archivo *user.controller.js* agreguemos lo siguiente.
+
+```javascript
+const usuarios = [
+  {
+    nombre: 'user1',
+    email: 'user1@example.com',
+    contraseña: 'contraseña',
+  },
+];
+```
+
+Este arreglo nos servira como un registro de usuarios, para empezar a realizar las operaciones CRUD.
+
+Ahora deberas agregar las siguientes funciones a continuación de este arreglo.
+
+### Obtener todos los usuarios
+
+```javascript
+exports.ObtenerUsuarios = (req, res) => {
+  try {
+    return res.json(usuarios);
+  } catch (error) {
+    return res.status(404);
+  }
+};
+```
+
+En esta funcion y en las demás utilizaremos la declaración **try...catch** es decir que el bloque intentar **(try)** estara la lógica que queremos que cumpla la función que en este caso devuelve el contenido del arreglo de usuarios y en **(catch)** especifica una respuesta si se produce una excepción, en esta y en las otras funciones el estado de respuesta sera 400 que significa "solicitud incorrecta".
+
+Acá te dejo el [link](https://learn.microsoft.com/en-us/gaming/playfab/api-references/http-response-status-codeshttps://learn.microsoft.com/en-us/gaming/playfab/api-references/http-response-status-codes "link") con la información sobre los distintos estados de respuesta http.
+
+### Recuperar un usuario
+
+```javascript
+exports.ObtenerUnUsuario = (req,res) => {
+  try {
+    usuarios.find(elemento => {
+      if(elemento.nombre === req.params.nombre) return res.send(elemento);
+    });
+    return res.status(404).send();
+  } catch (error) {
+    return res.status(400).send();
+  }
+};
+```
+Buscamos el usuario en el arreglo utilizando la función "find" de javascript. Verificamos si el nombre del elemento coincide con el nombre que enviamos por parametro a traves de la solicitud, si coinciden entonces devolvera el usuario que buscamos, caso contrario respondera con el estado 404 que signfica que no se encontro el recurso que se busca.
+
+### Crear usuario
+
+```javascript
+exports.CrearUsuario = (req,res) => {
+  try {
+    const { nombre, email, contraseña } = req.body;
+    usuarios.push({nombre: nombre,email: email,contraseña: contraseña});
+    return res.status(201).send();
+  } catch (error) {
+    return res.status(400);
+  }
+}
+```
+Para crear un usuario recibimos los campos que se envían de la solicitud desde req.body haciendo un destructuring o desestructuración que es una expresión de javascript que hace posible extraer datos de matrices u objetos, en este caso los datos que queremos obtener son el nombre, email y la contraseña.
+
+Guardamos en el arreglo de usuarios un objeto json que contiene los campos del usuario, usando la función push que permite insertar datos al arreglo. 
+
+La respuesta que otorgara sera el estado 201 que significa que el recurso fue creado.
+
+### Actualizar usuario
+
+```javascript
+exports.ActualizarUsuario = (req, res) => {
+  try {
+    const { nombre, email, contraseña } = req.body;
+    usuarios.find( elemento => {
+      if(elemento.nombre === req.params.nombre){
+        elemento.nombre = nombre;
+        elemento.email = email;
+        elemento.contraseña = contraseña;
+        return res.status(204).send();
+      }
+    })
+    return res.status(404);
+  } catch (error) {
+    return res.status(400);
+  }
+}
+```
+Al igual que la función que busca un usuario. En este caso cuando coincida el nombre de la busqueda lo que hara es actualizar los campos del usuario con los que se reciben del cuerpo de la solicitud, devolviendo como respuesta el estado 204 que quiere decir que la petición se realizo correctamente, pero la API no devuelve contenido.
+
+Caso contrario si no encuentra el usuario que se busca la API respondera con el estado 404.
+
+### Eliminar usuario
+
+```javascript
+exports.EliminarUsuario = (req, res) => {
+  try {
+    const index = usuarios.findIndex(elemento => elemento.nombre === req.params.nombre);
+    if(index !== -1) {
+      usuarios.splice(index,1);
+      return res.status(204).send();
+    }
+    return res.status(404).send();
+  } catch (error) {
+    return res.status(400).send();
+  }
+};
+```
+Lo que haremos para eliminar un usuario del arreglo es buscar primero el indice de donde se encuentra este mismo en el arreglo. Para ello buscamos ese indice utilizando la funcion "findIndex" sobre el arreglo de usuarios, comparando el nombre que enviamos por parametro con el nombre de la misma busqueda. Si lo encuentra devolvera el número de su posición sino el valor -1.
+
+Luego mediante el uso del comparador lógico **if** verificamos si la busqueda fue exitosa o no. En caso de haber encontrado al usuario se removera a este mismo utilizando la función "splice" sobre la matriz, en ella enviamos el indice de la posición y cuantos elementos queremos eliminar, que es solamente uno.
+
+La respuesta que devolvera sera el estado 204 si el usuario fue borrado o 404 en caso de que no fue encontrado el usuario en la matriz.
+
+### Importando las funciones del controlador sobre el archivo de rutas
+
+Bien ahora que tenemos las operaciones crud que se realizaran sobre el arreglo de usuarios, lo que haremos es traer esas funciones que creamos en nuestro archivo controlador. En el archivo de routes.index.js
+
+Esto deberia quedarte así:
+
+```javascript
+const routes = require('express').Router();
+const { ObtenerUsuarios, ObtenerUnUsuario, CrearUsuario, ActualizarUsuario, EliminarUsuario } = require('../controllers/user.controller');
+
+routes.get('/',(req,res) => res.send('Hola mundo!'));
+
+routes.get('/usuarios', ObtenerUsuarios);
+routes.get('/usuarios/:nombre', ObtenerUnUsuario);
+routes.post('/usuarios', CrearUsuario);
+routes.put('/usuarios/:nombre', ActualizarUsuario);
+routes.delete('/usuarios/:nombre', EliminarUsuario);
+
+module.exports = routes;
+```
+
+Como puedes ver sobre el endpoint de *usuarios* utilizamos los distintos verbos que son las operaciones que se realizaran sobre el cuando hagamos las solicitudes a la **API**. Y tambien vemos sobre algunas rutas '/:nombre' que es el parametro que necesitan algunas operaciones para poder realizar su función.
+
+### Solicitudes sobre la API
+Finalmente nos queda probar la **API**, en este caso yo utilizare [postman](https://www.postman.com/downloads/ "postman") para realizar las distintas solicitudes.
+
+**Crear un usuario**
+
+![postAPI](https://user-images.githubusercontent.com/44248035/204322906-8a84d892-c8dc-4951-9476-358ca9e6fce4.jpg)
+
+Como puedes ver envío a traves de body los datos que se necesitan para poder crear un usuario y en la parte superior o cabezera especifico el verbo POST, y la ruta o dirección de la **API**.
+
+**Obtener los usuarios**
+
+![getAPI](https://user-images.githubusercontent.com/44248035/204322973-8b66d253-093c-4b6b-8830-98fce2d7de1f.jpg)
+
+Lo que hago en esta solicitud es cambiar el verbo a GET pero la ruta es la misma.
+
+**Obtener un usuario**
+
+![getOneAPI](https://user-images.githubusercontent.com/44248035/204323142-81066f98-2a4a-4f75-a475-66072824162a.jpg)
+
+Buscamos un usuario agregando a la ruta como parametro el nombre del usuario.
+
+**Actualizar un usuario**
+
+![putAPI](https://user-images.githubusercontent.com/44248035/204323261-670c1881-c671-4c23-b44a-2a463a333088.jpg)
+
+Cuando vamos a actualizar lo que haremos es cambiar el verbo de la solicitud a PUT, a la ruta además le agregaremos como parametro el nombre del usuario que queremos actualizar y tambien debemos enviar los datos o campos del usuario con los valores que queremos actualizar.
+
+**Eliminar un usuario**
+
+![deleteAPI](https://user-images.githubusercontent.com/44248035/204323328-be2e6571-da6c-4b4d-80f8-19f86edb88ce.jpg)
+
+Para eliminar un usuario agregamos a la ruta como parametro el nombre del usuario y cambiamos el verbo de la solicitud a DELETE.
+
+*****
