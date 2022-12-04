@@ -1,4 +1,4 @@
-import style from '../styles/Post.module.css';
+import style from '../styles/post.module.css';
 import Image from 'next/image';
 import coffee from '../public/bmc-button.png';
 

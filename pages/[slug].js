@@ -1,9 +1,9 @@
 import { getFilesBySlug, getFiles } from '../lib/mdx';
 import { MDXRemote } from 'next-mdx-remote';
-import Navbar from '../components/navbar'
-import ButtonCoffee from '../components/btn_coffee'
+import Navbar from '../components/navbar';
+import ButtonCoffee from '../components/btn_coffee';
 import Footer from '../components/footer';
-import style from '../styles/Post.module.css';
+import style from '../styles/post.module.css';
 
 export default function Post({ source, frontmatter }){
   return (
