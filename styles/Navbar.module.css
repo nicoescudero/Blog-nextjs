@@ -1,20 +1,7 @@
-.navbar{
-  height: 80px;
-  width: 100%;
-  display: flex;
-  background-color: inherit;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  background-color: white;
-}
-
 .logo{
-  font-size: 25px;
   line-height: 80px;
   padding: 0 100px;
   color: black;
-  font-weight: bold;
 }
 
 .options{

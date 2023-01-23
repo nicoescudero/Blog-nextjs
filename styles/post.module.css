@@ -1,9 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital@0;1&family=Playfair+Display&family=Roboto:wght@100;300&display=swap');
 
+.navbar{
+  height: 80px;
+  width: 90%;
+  display: flex;
+  background-color: inherit;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+}
+
 .container{
   width: 70%;
   height: fit-content;
-  margin: 2% auto;
+  margin: 1% auto;
 }
 
 .post{
@@ -119,7 +130,6 @@
 @media (max-width: 700px) {
   .container{
     width: 90%;
-    margin-top: 10%;
   }
   .post > p > img{
     width: 98%;
@@ -130,7 +140,6 @@
 @media (max-width: 450px) {
   .container{
     width: 98%;
-    margin-top: 20%;
   }
   .post{
     font-size: 12px;
