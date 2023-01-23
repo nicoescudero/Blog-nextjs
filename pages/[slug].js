@@ -8,8 +8,8 @@ import style from '../styles/post.module.css';
 export default function Post({ source, frontmatter }){
   return (
     <div>
+      <Navbar navbar={style.navbar}/>
       <div className={style.container}>
-      <Navbar/>
       <article className={style.post}>
         <MDXRemote {...source}/>
       </article>
