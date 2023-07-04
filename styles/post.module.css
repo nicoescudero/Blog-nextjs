@@ -1,20 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital@0;1&family=Playfair+Display&family=Roboto:wght@100;300&display=swap');
 
-.navbar{
-  height: 80px;
-  width: 90%;
-  display: flex;
-  background-color: inherit;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  margin: auto;
-}
-
 .container{
   width: 70%;
   height: fit-content;
-  margin: 1% auto;
+  margin: 10vh auto;
 }
 
 .post{
@@ -142,27 +131,24 @@
     width: 98%;
   }
   .post{
-    font-size: 12px;
-  }
-  .post > h6{
-    font-size: 8px;
-  }
-  .post > h2, .post > h3,.post > h4{
     font-size: 15px;
   }
+  .post > h6{
+    font-size: 12px;
+  }
+  .post > h2, .post > h3,.post > h4{
+    font-size: 18px;
+  }
   .btn_coffee{
-    width: 50%;
+    width: 150px;
     margin: 2% auto;
   }
   .footer{
-    font-size: 10px;
+    font-size: 12px;
     height: fit-content;
     flex-direction: column;
   }
   .endpost{
-    font-size: 10px;
+    font-size: 12px;
   }
-  .btn_coffee{
-    width: 100px;
-  }
-}
+ }

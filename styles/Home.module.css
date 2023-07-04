@@ -1,19 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital@0;1&family=Playfair+Display&family=Roboto:wght@100;300&display=swap');
 
 .navbar{
-  height: 80px;
-  width: 90%;
+  position: fixed;
+  top:0;
+  height: 10vh;
+  width: 100%;
   display: flex;
   background-color: inherit;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin: auto;
 }
 
 .container{
   width: 80%;
-  margin: 1% auto;
+  margin: 15vh auto auto auto;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -120,11 +121,12 @@
 @media (max-width: 850px){
   .container{
     width: 90%;
-    margin-top: 2%;
+    margin-top: calc(auto - 10vh);
     flex-direction: column;
     align-items: center;
   }
   .about{
+    width: 30%;
     margin: 3% auto;
     text-align: center;
   }
@@ -135,37 +137,29 @@
   .btn_social{
     padding: 2px;
   }
-}
-
-@media (max-width: 650px){
-  .about{
-    width: 90%;
-    margin: 5% auto;
-  }
-}
-
-@media (max-width: 450px){
-  .container{
-    font-size: 10px;
-  }
-  
-  .container > h2{
-    font-size: 15px;
-  }
- 
   .social{
     flex-direction: column;
-    margin: 1% auto;
+    margin: auto;
     width: fit-content;
   }
+}
 
-  .about{
-    margin-bottom: 10%;
-    height: 50vh;
+@media (max-width: 590px){
+  .container{
+    width: 95%;
   }
-
+  .about{
+    width: 60%;
+    margin: 3% auto 0 auto;
+    height: 50vh;
+    padding: 0;
+  }
+}
+  
+@media (max-width: 450px){
   .footer{
-    font-size: 10px;
+    font-size: 12px;
+    position: relative;
     height: max-content;
     flex-direction: column;
   }

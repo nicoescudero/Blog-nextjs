@@ -1,16 +1,5 @@
-.navbar{
-  height: 80px;
-  width: 90%;
-  display: flex;
-  background-color: inherit;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  margin: auto;
-}
-
 .main{
-  margin: 1% auto;
+  margin: 15vh auto auto auto;
   width: 80%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -89,7 +78,7 @@
   }
   .footer{
     position: relative;
-    margin-top: auto;
+    margin-top: 10vh;
   }
 }
 
