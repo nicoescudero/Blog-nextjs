@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import style from '../styles/Home.module.css';
+import styles from '../styles/Home.module.css';
 
 export default function PostCard(post) {
   return (
-    <div className={style.card} >
+    <div className={styles.card} >
       <h2>
         <Link href={`/${post.slug}`}>
           {post.title}

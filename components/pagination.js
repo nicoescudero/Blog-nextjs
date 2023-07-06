@@ -1,4 +1,4 @@
-import style from '../styles/Home.module.css';
+import styles from '../styles/Home.module.css';
 
 const Pagination = ({ totalPosts, postsPerPage, setCurrentPage }) => {
   let pages = [];
@@ -9,7 +9,7 @@ const Pagination = ({ totalPosts, postsPerPage, setCurrentPage }) => {
     <div>
       {
         pages.map((page,index) => (
-          <button key={index} onClick={() => setCurrentPage(page)} className={style.btn_pagination}>{page}</button>
+          <button key={index} onClick={() => setCurrentPage(page)} className={styles.btn_pagination}>{page}</button>
         ))
       }
     </div>

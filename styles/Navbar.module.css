@@ -1,4 +1,4 @@
-.navbar{
+.navbarmenu{
   width: 100%;
   height: 80px;
   display: flex;
@@ -53,7 +53,7 @@
 }
 
 @media (max-width: 850px) {
-  .navbar{
+  .navbarmenu{
     position: fixed;
     top: 0;
     z-index: 1;

@@ -3,19 +3,19 @@ import { MDXRemote } from 'next-mdx-remote';
 import Navbar from '../components/navbar';
 import ButtonCoffee from '../components/btn_coffee';
 import Footer from '../components/footer';
-import style from '../styles/post.module.css';
+import styles from '../styles/post.module.css';
 
 export default function Post({ source, frontmatter }){
   return (
     <div>
-      <Navbar navbar={style.navbar}/>
-      <div className={style.container}>
-      <article className={style.post}>
+      <Navbar/>
+      <div className={styles.container}>
+      <article className={styles.post}>
         <MDXRemote {...source}/>
       </article>
       <ButtonCoffee/>
       </div>
-      <Footer footer={style.footer}/>
+      <Footer footer={styles.footer}/>
     </div>
   );
 };

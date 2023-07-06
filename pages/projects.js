@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
-import style from '../styles/Projects.module.css';
+import styles from '../styles/Projects.module.css';
 import github from '../public/github.png';
 import siteweb from '../public/internet.png';
 
@@ -90,18 +90,18 @@ export default function Projects (){
 
   return (
     <div>
-      <Navbar navbar={style.navbar}/>
-      <div className={style.main}>
+      <Navbar/>
+      <div className={styles.main}>
         {
           projects.map(( item, index ) => {
             return (
-              <div className={style.article} key={index}>
-                <div className={style.title}>
+              <div className={styles.article} key={index}>
+                <div className={styles.title}>
                   <h3>{item.title}</h3>
-                  <div className={style.title}>
+                  <div className={styles.title}>
                     {
                       item.links.map((link,index) => (
-                        <div className={style.link} key={index}>
+                        <div className={styles.link} key={index}>
                           <a href={link.href}><Image src={link.src} alt={link.alt}/></a>
                         </div>    
                       ))
@@ -109,10 +109,10 @@ export default function Projects (){
                   </div>
                 </div>
                 <p>{item.description}</p>
-                <div className={style.listtech}>
+                <div className={styles.listtech}>
                   {
                     item.technology.map((name,index) => (
-                      <label className={style.technology} key={index}>{name}</label>
+                      <label className={styles.technology} key={index}>{name}</label>
                     ))
                   }
                 </div>
@@ -121,7 +121,7 @@ export default function Projects (){
           })
         }
       </div>
-      <Footer footer={style.footer}/>
+      <Footer footer={styles.footer}/>
     </div>
   );
 };

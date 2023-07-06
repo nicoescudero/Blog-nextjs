@@ -4,7 +4,7 @@ import Navbar from '../components/navbar'
 import Footer from '../components/footer'
 import Pagination from '../components/pagination'
 import PostCard from '../components/postcard'
-import style from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css'
 import { getAllFilesMetaData } from '../lib/mdx'
 import { useState } from 'react'
 import profile from '../public/profile.jpg'
@@ -45,30 +45,30 @@ export default function Home({ posts }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <Navbar className={style.navbar}/>
-    <main className={style.container}>
-      <div className={style.list}>
+    <Navbar/>
+    <main className={styles.container}>
+      <div className={styles.list}>
         <h2>Posts</h2>
         <ListPosts currentPosts={ currentPosts }/>
         <Pagination totalPosts = { posts.length } postsPerPage = { postsPerPage } setCurrentPage = { setCurrentPage }/>
       </div>
-      <aside className={style.about}>
+      <aside className={styles.about}>
         <h3>Acerca de mi</h3>
-        <div className={style.profile}>
+        <div className={styles.profile}>
           <Image src={profile} alt="profile" object-fit="contain"/>
         </div>
-        <div className={style.social}>
-          <div className={style.btn_social}>
+        <div className={styles.social}>
+          <div className={styles.btn_social}>
             <a href="https://www.linkedin.com/in/nicolas-escudero/">
               <Image src={linkedin} alt="linkedin"/>
             </a>
           </div>
-          <div className={style.btn_social}>
+          <div className={styles.btn_social}>
             <a href="https://twitter.com/NicoDev_Code">
               <Image src={twitter} alt="twitter"/>
             </a>
           </div>
-          <div className={style.btn_social}>
+          <div className={styles.btn_social}>
             <a href="https://github.com/nicoescudero">
               <Image src={github} alt="github"/>
             </a>
@@ -76,7 +76,7 @@ export default function Home({ posts }) {
         </div>
       </aside>
     </main>
-    <Footer footer={style.footer}/>
+    <Footer footer={styles.footer}/>
     </div>
   )
 }
