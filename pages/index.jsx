@@ -45,7 +45,7 @@ export default function Home({ posts }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <Navbar navbar={style.navbar}/>
+    <Navbar navbar={style.navbar} className={style.navbar}/>
     <main className={style.container}>
       <div className={style.list}>
         <h2>Posts</h2>
