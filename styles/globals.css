@@ -15,6 +15,20 @@ a {
   box-sizing: border-box;
 }
 
+nav {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  background-color: white;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top:0;
+  left: 0;
+  z-index: 1;
+}
+
 @media (prefers-color-scheme: light) {
   html {
     color-scheme: light;
@@ -22,5 +36,37 @@ a {
   body {
     color: black;
     background: white;
+  }
+}
+
+@media (max-width: 850px) {
+  nav {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    text-align: center;
+  }
+  nav > .logo {
+    font-size: 18px;
+    padding: 0 5px;
+    line-height: 10px;
+  }
+  nav > .options{
+    background: white;
+    position: fixed;
+    flex-direction: column;
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+    top: 80px;
+    transition: all .5s;
+    left: 100%;
+  }
+  nav > .menu {
+    display: block;
+  }
+  nav > .open{
+    left: 0;
+    z-index: 1;
   }
 }
