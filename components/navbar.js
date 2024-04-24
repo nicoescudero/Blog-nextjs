@@ -3,6 +3,7 @@ import Image from 'next/image';
 import styles from '../styles/Navbar.module.css';
 import menu from '../public/hamburger.png';
 import back from '../public/back.png';
+import logo from '../public/logo1.png';
 
 import { useState } from 'react';
 
@@ -16,11 +17,13 @@ const Navbar = () => {
   };
   return (
       <nav className={styles.navbarmenu}>
-        <label className={styles.logo}>NE Dev</label>
+        <label className={styles.logo}>
+          <Image src={logo} alt='logo' className={styles.logoimg}/>
+        </label>
         <div className={styles.menu}>
             <input type='checkbox' name='check' id='check' checked={isOpen} onChange={handleToggleMenu}/>
             <label htmlFor='check'>
-                <Image src={imagen} alt='menu'/>
+                <Image src={imagen} alt='menu'className={styles.menuNAV}/>
             </label>
         </div>
         <div className={`${styles.options} ${isOpen ? styles.open : ''}`}>
