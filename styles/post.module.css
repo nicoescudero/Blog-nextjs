@@ -85,8 +85,16 @@
 }
 
 .btn_coffee{
+  width: fit-content;
+  margin: 5% auto;
+  justify-content: center;
+  display: flex;
+}
+
+.btn_coffeeIMG {
   width: 200px;
-  margin: 2% auto;
+  height: 100px;
+  object-fit: contain;
 }
 
 .footer{
