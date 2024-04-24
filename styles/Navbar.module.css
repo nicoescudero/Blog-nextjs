@@ -2,7 +2,7 @@
   width: 100%;
   height: 80px;
   display: flex;
-  background-color: white;
+  background-color: #fff;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
@@ -39,7 +39,7 @@
 }
 
 .btn_page:hover{
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #000;
   transition: 1s;
 }
 
@@ -71,7 +71,7 @@
     line-height: 10px;
   }
   .options{
-    background: white;
+    background: #fff;
     position: fixed;
     flex-direction: column;
     text-align: center;

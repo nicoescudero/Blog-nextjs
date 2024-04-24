@@ -4,7 +4,7 @@
   width: 100%;
   height: 80px;
   display: flex;
-  background-color: white;
+  background-color: #fff;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
@@ -34,13 +34,13 @@
 
 .card > h2 {
   font-weight: 400;
-  color: blue;
+  color: #0000FF;
   width: fit-content;
   margin: 0;
 }
 
 .card > h2:hover{
-  color: navy;
+  color: #000080;
 }
 
 .card > p{
@@ -67,7 +67,7 @@
 .about{
   width: 20%;
   height: fit-content;
-  color: gray;
+  color: #808080;
   text-align: center;
 }
 
@@ -110,8 +110,8 @@
   object-fit: contain;
 }
 .footer{
-  background-color: black;
-  color: white;
+  background-color: #000;
+  color: #fff;
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -180,7 +180,7 @@
 .btn_pagination{
   background: #000;
   color: #FFFF00;
-  border: 1px solid black;
+  border: 1px solid #000;
   padding: 1px 4px;
   margin: 3px;
   border-radius: 2px;
