@@ -9,8 +9,9 @@
 
 .article{
   padding: 15px;
-  border: 1px solid black;
+  border-bottom: 1px solid #C0C0C0;
   border-radius: 3px;
+  box-shadow: -1px 2px 10px #C0C0C0;
 }
 
 .footer{
@@ -33,14 +34,14 @@
 }
 
 .footer > a{
-  color: lightblue;
+  color: #FFFF00;
 }
 
 .technology{
   border-radius: 3px;
   margin: 3px;
-  color: rgb(2, 2, 82);
-  background-color: rgba(9, 106, 186, 0.819);
+  color: #FFFF00;
+  background: #000;
   font-size: 10px;
   font-weight: bold;
   padding: 5px;
@@ -57,7 +58,10 @@
   width: 24px;
   height: 24px;
 }
-
+.iconGH {
+  width: 24px;
+  height: 24px;
+}
 .links{
   display: flex;
   flex-direction: row;

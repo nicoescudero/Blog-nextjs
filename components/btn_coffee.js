@@ -9,7 +9,7 @@ export default function ButtonCoffee() {
       <br/>
       <div className={styles.btn_coffee}>
         <a href="https://www.buymeacoffee.com/nicoDeveloper">
-          <Image src={coffee} alt="buy me a coffe widget" />
+          <Image src={coffee} alt="buy me a coffe widget" className={styles.btn_coffeeIMG}/>
         </a>
       </div>
     </div>

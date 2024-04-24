@@ -102,7 +102,7 @@ export default function Projects (){
                     {
                       item.links.map((link,index) => (
                         <div className={styles.link} key={index}>
-                          <a href={link.href}><Image src={link.src} alt={link.alt}/></a>
+                          <a href={link.href}><Image src={link.src} alt={link.alt} className={styles.iconGH}/></a>
                         </div>    
                       ))
                     }
