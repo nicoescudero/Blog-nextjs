@@ -34,45 +34,62 @@ export default function Projects (){
     technology: ['NODEJS','EXPRESS','SWAGGER','MOCHA-CHAI','AWS','JWT','TEST UNITARIOS'],
   },
   {
-    title: 'Generador de codigo QR',
+    title: 'Rockstar Games landing page',
     links: [
       {
-        href: 'https://github.com/nicoescudero/qr-code-generator',
+        href: 'https://github.com/nicoescudero/rs-clone',
+        src: github,
+        alt: 'github'
+      },
+    ],
+    description: 'Rediseño de la pagina principal de Rockstar games',
+    technology: ['REACT','CSS','JAVASCRIPT'],
+  },
+  {
+    title: 'Food landing page',
+    links: [
+      {
+        href: 'https://github.com/nicoescudero/food-landing-page',
+        src: github,
+        alt: 'github'
+      },
+    ],
+    description: 'Landing page de un restaurante',
+    technology: ['REACT','CSS','JAVASCRIPT','RESPONSIVE'],
+  },
+  {
+    title: 'Portafolio landing page',
+    links: [
+      {
+        href: 'https://github.com/nicoescudero/Portfolio-Design1',
         src: github,
         alt: 'github'
       },
       {
-        href: 'https://qr-code-gntor.herokuapp.com/',
+        href: 'https://nicoescudero.github.io/Portfolio-Design1/',
         src: siteweb,
-        alt: 'SiteWeb'
-      }
+        alt: 'siteweb'
+      },
     ],
-    description: 'Generador de codigo QR construido con NodeJS y plantillas ejs.',
-    technology: ['NODEJS','CSS','EJS'],
+    description: 'Una landing page estatica ',
+    technology: ['HTML','CSS','JAVASCRIPT','RESPOSIVE'],
   },
   {
-    title: 'API-REST de Notas',
+    title: 'Digital Studio JK',
     links: [
       {
-        href: 'https://github.com/nicoescudero/Api-Notes',
+        href: 'https://github.com/nicoescudero/Digital-Studio-LandingPage',
         src: github,
         alt: 'github'
       },
-    ],
-    description: 'API-REST con autenticacion de usuarios y operaciones CRUD de las notas.',
-    technology: ['NODEJS','MONGOOSE','EXPRESS','JWT','EXPRESS-VALIDATOR'],
-  },
-  {
-    title: 'API de Mercado',
-    links: [
       {
-        href: 'https://github.com/nicoescudero/Api_Market',
-        src: github,
-        alt: 'github'
+        href: 'https://nicoescudero.github.io/Digital-Studio-LandingPage/',
+        src: siteweb,
+        alt: 'siteweb'
       },
     ],
-    description: 'API-REST de mercado; permite hacer operaciones CRUD con usuarios y productos.',
-    technology: ['NODEJS','EXPRESS','MONGOOSE','JWT','PASSPORT'],
+    description: 'Landing page de un estudio digital',
+    technology: ['HTML','CSS','JAVASCRIPT','RESPONSIVE'],
   },
   {
     title: 'GraphQL de Productos',
@@ -102,7 +119,7 @@ export default function Projects (){
                     {
                       item.links.map((link,index) => (
                         <div className={styles.link} key={index}>
-                          <a href={link.href}><Image src={link.src} alt={link.alt} className={styles.iconGH}/></a>
+                          <a href={link.href} target='_blank' rel='noreferrer'><Image src={link.src} alt={link.alt} className={styles.iconGH}/></a>
                         </div>    
                       ))
                     }

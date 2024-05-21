@@ -15,8 +15,8 @@
 }
 
 .footer{
-  background-color: black;
-  color: white;
+  background-color: #000;
+  color: #fff;
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -25,8 +25,7 @@
   justify-content: center;
   height: 5vh;
   width: 100%;
-  position: absolute;
-  bottom: 0;
+  margin-top: 5vh;
 }
 
 .footer > p{
@@ -72,19 +71,14 @@
   display: grid;
   grid-template-columns: repeat(4, max-content);
   justify-content: center;
-  align-items: center;
 }
 
 @media (max-width: 1200px){
   .main{
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
   .article{
     padding: 10px;
-  }
-  .footer{
-    position: relative;
-    margin-top: 10vh;
   }
 }
 
